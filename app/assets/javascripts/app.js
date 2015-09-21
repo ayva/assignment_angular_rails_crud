@@ -5,3 +5,20 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
 }])
+
+.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvider, $stateProvider ){
+  $stateProvider.state("pins", {
+    url: "/pins",
+    templateUrl: '/templates/pinsLayout.html'
+
+  })
+.state('pins.index',{
+    url: "/index",
+    templateUrl: '/templates/pinsIndex.html',
+    controller: 'PinsIndexCtrl',
+    resolve: {
+      pins: ['Restangular', function(Restangular){
+        return Restangular.all('pins').getList();
+      }]}
+  });
+}]);

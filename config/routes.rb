@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pinboard#index'
-
-  resources 'pins'
-
+  scope :api do 
+    scope :v1 do
+      resources 'pins'
+    end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
