@@ -29,7 +29,7 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
     .state('pins.create',{
       url: '/create',
       //templateUrl: 'templates/PinsCreate.html',
-      view: {
+      views: {
         'formPin': {
           
           controller: function(){console.log('inside pinscreate');},
@@ -42,7 +42,7 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
     .state('pins.edit', {
       url: '/edit',
       templateUrl: 'templates/PinsEdit.html',
-      view: {
+      views: {
         'formPin' :{
           templateUrl: 'templates/PinForm.html'
         }
