@@ -7,22 +7,46 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
   RestangularProvider.setDefaultHttpFields({"content-type": "application/json"});
 }])
 
-.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvider, $stateProvider ){
+.config(["$urlRouterProvider", "$stateProvider",
+          function($urlRouterProvider, $stateProvider ){
 
   $stateProvider
     .state("pins", {
       url: "/pins",
-      templateUrl: 'templates/pinsLayout.html',
-      controller: function(){console.log("pins angular controller");}
-
+      templateUrl: 'templates/pinsLayout.html'
+      
     })
     .state('pins.index',{
       url: "/index",
-      templateUrl: 'templates/pinsIndex.html',
       controller: 'PinsIndexCtrl',
+      templateUrl: 'templates/pinsIndex.html',
       resolve: {
         pins: ['Restangular', function(Restangular){
           return Restangular.all('pins').getList();
         }]}
+
+    })
+    .state('pins.create',{
+      url: '/create',
+      //templateUrl: 'templates/PinsCreate.html',
+      view: {
+        'formPin': {
+          
+          controller: function(){console.log('inside pinscreate');},
+          templateUrl: 'templates/PinForm.html'
+        },
+        '' : {templateUrl: 'templates/PinsCreate.html'}
+
+      }
+    })
+    .state('pins.edit', {
+      url: '/edit',
+      templateUrl: 'templates/PinsEdit.html',
+      view: {
+        'formPin' :{
+          templateUrl: 'templates/PinForm.html'
+        }
+      }
     });
+    
 }]);
