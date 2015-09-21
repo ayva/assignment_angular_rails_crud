@@ -12,7 +12,8 @@ Index
     <th>Delete</th>
     <th>Update</th>
   </tr>
-<tr ng-repeat ="pin in pins">
+<tr ng-repeat ="pin in pins | orderBy: '-created_at'">
+  <!-- <td>{{pin}}</td> -->
   <td>{{pin.item_name}}</td>
   <td>{{pin.buy_sell}}</td>
   <td>{{pin.description}}</td>
@@ -23,4 +24,3 @@ Index
 </tr>
 
 </table>
-

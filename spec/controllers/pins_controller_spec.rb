@@ -28,4 +28,21 @@ RSpec.describe PinsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    let!(:pin){ FactoryGirl.create(:pin) }
+
+    it 'should create a pin' do
+
+      expect{post :create, format: :json, pin: {item_name: "Item Name", description: "Describe", user_id: 1, buy_sell: true}}.to change{Pin.count}.by(1)
+    end
+
+    xit 'should not create a pin if required field is missing' do
+
+      expect{post :create, format: :json, pin: {description: "Describe", user_id: 1, buy_sell: true}}.to change{Pin.count}.by(0)
+    end
+
+
+
+  end
+
 end
