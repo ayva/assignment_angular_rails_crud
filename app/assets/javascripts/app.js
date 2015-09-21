@@ -10,11 +10,13 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
 .config(["$urlRouterProvider", "$stateProvider",
           function($urlRouterProvider, $stateProvider ){
 
+  $urlRouterProvider.otherwise('/pins/index')
+
   $stateProvider
     .state("pins", {
       url: "/pins",
       templateUrl: 'templates/pinsLayout.html'
-      
+
     })
     .state('pins.index',{
       url: "/index",
@@ -26,19 +28,13 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
         }]}
 
     })
+
     .state('pins.create',{
       url: '/create',
-      //templateUrl: 'templates/PinsCreate.html',
-      views: {
-        'formPin': {
-          
-          controller: function(){console.log('inside pinscreate');},
-          templateUrl: 'templates/PinForm.html'
-        },
-        '' : {templateUrl: 'templates/PinsCreate.html'}
-
-      }
+      controller: 'PinsCreateCtrl',
+      templateUrl: 'templates/PinsCreate.html',
     })
+
     .state('pins.edit', {
       url: '/edit',
       templateUrl: 'templates/PinsEdit.html',
@@ -48,5 +44,5 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
         }
       }
     });
-    
+
 }]);

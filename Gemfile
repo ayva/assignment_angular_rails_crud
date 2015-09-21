@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'angularjs-rails'
-gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 
 gem 'faker'

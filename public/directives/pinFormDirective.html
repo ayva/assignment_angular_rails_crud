@@ -1,13 +1,15 @@
 
-<form>
-  <input type="text" placeholder="Title">
-  <select>
-    <option>Buy</option>
-    <option selected>For Sale</option>
+<form ng-model="pinForm" >
+  <input ng-model="pinForm.title" type="text" placeholder="Title">
+  <select ng-model="pinForm.buy_sell">
+    <option value="buy">Buy</option>
+    <option value="sell" >For Sale</option>
   </select>
   <br>
-  <textarea  placeholder="Describe your pin"></textarea>
+  <textarea ng-model="pinForm.description" placeholder="Describe your pin"></textarea>
   <br>
-  <input type="submit" name="Update Pin">
+  <input type="submit" name="Update Pin" ng-click="submit()">
 
 </form>
+
+{{pinForm}}
