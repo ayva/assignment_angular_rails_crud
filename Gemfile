@@ -40,6 +40,7 @@ gem 'faker'
 
 group :development, :test do
 
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
