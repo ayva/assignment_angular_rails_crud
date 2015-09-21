@@ -18,9 +18,32 @@ class PinsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def destroy
+    @pin = Pin.find(params[:id])
+    respond_to do |format|
+      if @pin.destroy()
+        format.json{ render json: @pin.to_json{ include :user}}
+      end
+    end
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+    respond_to do |format|
+      if @pin.update(pin_params)
+        format.json{ render json: @pin.to_json{ include :user}}
+      end
+    end
+  end
+
 
   private
   def pin_params
     params.require(:pin).permit(:item_name, :description, :buy_sell, :user_id)
   end
+
 end

@@ -9,12 +9,18 @@ Index
     <th>Buy/Sell</th>
     <th>description</th>
     <th>User ID</th>
-</tr>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
 <tr ng-repeat ="pin in pins">
   <td>{{pin.item_name}}</td>
   <td>{{pin.buy_sell}}</td>
   <td>{{pin.description}}</td>
   <td>{{pin.user_id}}</td>
+  <td><button ng-click="removePin($index)">Delete {{$index}}</button></td>
+  <td><button ng-click="updatePin($index)">Update {{$index}}</button></td>
+
 </tr>
 
 </table>
+

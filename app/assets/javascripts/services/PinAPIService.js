@@ -6,8 +6,14 @@ pinBoard.service('PinAPIService',['Restangular',
       return basePins.getList();
     };
 
-    this.Update = function(id){
-      return Restangular.put('pins', id).post(newPin);
+    this.Update = function(id, newPin){
+      var pin = Restangular.one('pins', id);
+      pin.item_name = newPin.item_name;
+      pin.description = newPin.description;
+      pin.buy_sell = pin.buy_sell;
+
+      return pin.put();
+      
     };
 
     this.Show = function(id){
@@ -19,6 +25,7 @@ pinBoard.service('PinAPIService',['Restangular',
     };
 
     this.Delete = function(id){
+      console.log('service id ', id);
       return Restangular.one('pins', id).remove();
     };
 
