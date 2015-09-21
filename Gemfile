@@ -36,6 +36,8 @@ gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 
+gem 'faker'
+
 group :development, :test do
 
   gem 'pry-byebug'
