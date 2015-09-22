@@ -14,7 +14,7 @@ Index
   </tr>
 <tr ng-repeat ="pin in pins | orderBy: '-created_at'">
   <!-- <td>{{pin}}</td> -->
-  <td>{{pin.item_name}}</td>
+  <td><a ui-sref="pins.show({{pin.id}})" ng-click="showPin({{pin.id}})">{{pin.item_name}}</a></td>
   <td>{{pin.buy_sell}}</td>
   <td>{{pin.description}}</td>
   <td>{{pin.user_id}}</td>

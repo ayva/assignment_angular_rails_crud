@@ -1,4 +1,15 @@
-pinBoard.controller('PinsIndexCtrl', ['$scope', 'pins', 'Restangular', 'PinAPIService', function($scope, pins, Restangular, PinAPIService){
+pinBoard.controller('PinsIndexCtrl', ['$scope', '$stateParams', 'pins', 'Restangular', 'PinAPIService', function($scope, $stateParams,pins, Restangular, PinAPIService){
+
+  
+
+  $scope.showPin = function(id){
+    console.log(id)
+    $scope.id = $stateParams.id;
+    console.log($scope.pin );
+    $scope.pin = PinAPIService.Show(id);
+  };
+
+
   $scope.pins = pins;
   $scope.updateId = -1;
   $scope.updatingStatus = true;

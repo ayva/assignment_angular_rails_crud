@@ -19,7 +19,12 @@ class PinsController < ApplicationController
   end
 
   def show
-
+    @pin = Pin.find(params[:id])
+    respond_to do |format|
+      if @pin
+        format.json{ render json: @pin.to_json{ include :user}}
+      end
+    end
   end
 
   def destroy

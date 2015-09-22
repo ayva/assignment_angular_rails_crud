@@ -28,6 +28,15 @@ var pinBoard = angular.module('pinBoard', ['ui.router', 'restangular'])
         }]}
 
     })
+    .state('pins.show', {
+      url: "/:id",
+      controller: 'PinsIndexCtrl',
+      templateUrl: 'templates/pinsShow.html',
+      resolve: {
+        pins: ['Restangular', function(Restangular){
+          return Restangular.all('pins').getList();
+        }]}
+    })
 
     .state('pins.create',{
       url: '/create',
